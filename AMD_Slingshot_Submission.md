@@ -113,7 +113,7 @@ This is a systems-level innovation, not a prompt tweak.
 ## 7. Process Flow Diagram
 
 ```mermaid
-graph TD
+graph LR
     A[User Input] --> B(Pre-Processor: Structuring + Constraint Encoding)
     B --> C{Policy Selector: Hardware Profile Based}
     C --> D[Compiled Reasoning Scaffold]
@@ -171,7 +171,7 @@ graph TD
 ## 10. Architecture Diagram
 
 ```mermaid
-graph TD
+graph LR
     A[Application Layer] --> B[API Wrapper]
     B --> C[MediEdge Compiler Core]
     

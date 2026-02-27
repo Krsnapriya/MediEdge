@@ -13,6 +13,32 @@ MediEdge is a **Clinical Stability Layer** for deterministic inference on edge d
 - **Latency Jitter**: Reduced by ~76% (Higher predictability).
 - **Efficiency**: ~87% improvement in Power Proxy (latency × tokens).
 
+## 🏗️ Architectural Workflow
+
+```mermaid
+graph TD
+    A["[Raw Clinical Input]"] -- "Unstructured Query" --> B["MediEdge Stability Engine"]
+    
+    subgraph "Inference Control Layer"
+        B --> C["Policy Compilation"]
+        C --> D["Structured Scaffolding (JSON Schema)"]
+    end
+    
+    subgraph "Execution Plane (Local Edge)"
+        D -- "Optimized Payload" --> E["Local LLM (Mistral 7B / AMD Ryzen AI)"]
+        E -- "Raw Response" --> F["Validation & Correction"]
+    end
+    
+    F --> G["Deterministic JSON Output"]
+    
+    G -- "Stability Metrics" --> H["Monitoring Dashboard"]
+    G -- "Payload" --> I["Clinical EMR Integration"]
+    
+    style B fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style E fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style G fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff
+```
+
 ## 🛠️ Components
 - `mediedge_benchmark.py`: Core benchmarking engine with 20 diverse clinical cases.
 - `mediedge_benchmark_dashboard.py`: Interactive Streamlit dashboard for real-time visualization.
